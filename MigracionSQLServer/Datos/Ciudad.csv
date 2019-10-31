@@ -1,0 +1,223 @@
+1,1,San Ramon
+2,2,Copey
+3,3,Palmitos
+4,4,Sierra
+5,5,Curena
+6,6,San Joaquin
+7,7,Katira
+8,3,San Jose
+9,8,La Rita
+10,9,Cabo Velas
+11,10,Nosara
+12,11,Patio de Agua
+13,12,Sixaola
+14,13,Tierra Blanca
+15,12,Telire
+16,14,Alegria
+17,15,Frailes
+18,15,Rosario
+19,16,La Union
+20,4,San Juan
+21,17,Palmira
+22,18,San Jorge
+23,19,Candelaria
+24,20,Tres Equis
+25,21,La Amistad
+26,22,Uruca
+27,23,Rio Blanco
+28,8,Guapiles
+29,24,Ciudad Cortes
+30,25,La Asuncion
+31,26,Belen
+32,27,Bijagua
+33,28,San Pablo
+34,24,Palmar
+35,29,Corredor
+36,30,Juan Vinas
+37,31,San Jeronimo
+38,32,Santa Lucia
+39,33,Paracito
+40,13,Dulce Nombre
+41,34,Pocora
+42,9,Tamarindo
+43,35,Rio Cuarto
+44,36,La Ceiba
+45,37,Santa Barbara
+46,23,Limon
+47,34,Mercedes
+48,38,San Pedro
+49,9,Diria
+50,20,Tuis
+51,39,San Juan
+52,18,El Amparo
+53,6,Barrantes
+54,30,Tucurrique
+55,40,Granadilla
+56,23,Valle La Estrella
+57,41,San Juan Grande
+58,42,Volcan
+59,42,Colinas
+60,43,Isla del Coco
+61,32,San Jose de la Montana
+62,44,Orosi
+63,45,Tronadora
+64,21,Platanares
+65,1,Concepcion
+66,13,Carmen
+67,15,San Rafael Arriba
+68,26,Sardinal
+69,3,San Jeronimo
+70,46,Quitirrisi
+71,47,Curunbande
+72,13,Agua Caliente
+73,48,San Juan
+74,33,Santo Tomas
+75,30,Pejibaye
+76,41,Caldera
+77,45,Tilaran
+78,29,Laurel
+79,49,Santa Elena
+80,32,San Pablo
+81,50,San Francisco
+82,51,Potrero Cerrado
+83,34,Duacari
+84,43,Acapulco
+85,52,Jesus
+86,1,San Juan
+87,33,San Vicente
+88,16,Miramar
+89,53,Zapotal
+90,54,Jesus Maria
+91,55,San Antonio
+92,17,Zapote
+93,5,La Virgen
+94,55,San Pablo
+95,24,Sierpe
+96,27,San Jose
+97,56,San Antonio
+98,51,San Rafael
+99,57,Cervantes
+100,58,Canas
+101,34,Guacimo
+102,2,Santa Maria
+103,59,Matambu
+104,60,San Francisco
+105,7,Buenavista
+106,61,Porvenir
+107,62,Monterrey
+108,52,Atenas
+109,63,Santiago
+110,1,San Rafael
+111,22,Salitral
+112,14,Pacuarito
+113,50,Ipis
+114,51,Cot
+115,64,San Antonio
+116,65,Jaco
+117,7,San Rafael
+118,2,Jardin
+119,14,Cairo
+120,32,Barva
+121,44,Cachi
+122,46,Piedras Negras
+123,60,Mercedes
+124,46,Picagres
+125,66,Sabalito
+126,29,La Cuesta
+127,67,Aguas Zarcas
+128,57,Capellades
+129,21,San Isidro del General
+130,61,Santa Rita
+131,13,Quebradilla
+132,44,Paraiso
+133,68,Platanillo
+134,42,Pilas
+135,15,San Antonio
+136,42,Boruca
+137,5,Horquetas
+138,11,San Isidro
+139,69,San Roque
+140,27,Delicias
+141,65,Tarcoles
+142,70,Savegre
+143,43,Chacarita
+144,71,San Ignacio
+145,8,Colorado
+146,42,Changuena
+147,72,San Luis
+148,43,Lepanto
+149,33,Para
+150,25,San Antonio
+151,42,Potrero Grande
+152,69,Puente de Piedra
+153,68,Cascajal
+154,73,Sarchi Norte
+155,74,Parrita
+156,45,Libano
+157,1,Dulce Nombre
+158,19,Zaragoza
+159,26,Palmira
+160,20,La Isabel
+161,14,Florida
+162,61,Bejuco
+163,10,Mansion
+164,1,San Diego
+165,18,Los Chiles
+166,75,Pavon
+167,76,Batan
+168,56,San Felipe
+169,23,Matama
+170,66,San Vito
+171,49,Santa Cecilia
+172,68,Dulce Nombre de Jesus
+173,75,Guaycara
+174,54,Labrador
+175,15,San Miguel
+176,39,Leon XIII
+177,25,La Ribera
+178,48,San Rafael
+179,37,San Pedro
+180,77,San Marcos
+181,19,Esquipulas
+182,78,Bagaces
+183,52,San Jose
+184,51,Santa Rosa
+185,4,Las Juntas
+186,66,Pittier
+187,20,Peralta
+188,61,Carmona
+189,22,Pozos
+190,29,Paso Canoas
+191,20,Chirripo
+192,17,Zarcero
+193,79,San Jose
+194,76,Carrandi
+195,10,Nicoya
+196,76,Matina
+197,40,Curridabat
+198,41,Macacona
+199,63,Angeles
+200,34,Rio Jimenez
+201,50,Purral
+202,9,Tempate
+203,64,San Miguel
+204,12,Bratsi
+205,71,Palmichal
+206,68,San Isidro
+207,9,Cartagena
+208,11,Tobosi
+209,71,Sabanillas
+210,39,Anselmo Llorente
+211,79,San Francisco
+212,80,San Rafael
+213,80,San Jose
+214,69,San Jose
+215,66,Limoncito
+216,59,Puerto Carrillo
+217,64,San Rafael
+218,79,San Isidro
+219,8,Jimenez
+220,59,Monte Romo
+221,49,La Garita
+222,63,San Josecito
+223,47,Mayorga

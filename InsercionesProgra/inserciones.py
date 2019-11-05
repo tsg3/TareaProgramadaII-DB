@@ -1270,3 +1270,13 @@ def insertar_datos():
     clientes_dia_2()
     reportes_dia_1()
     envios_dia_2()
+
+def test():
+    cur.execute("""SELECT V.NumeroVenta
+FROM ReporteVenta AS V
+INNER JOIN Articulo AS A ON A.IdArticulo = V.IdArticulo
+WHERE A.IdProducto = 1;""")
+    res = cur.fetchall()
+    res = [i[0] for i in res]
+    res = list(dict.fromkeys(res))
+    return res, len(res)

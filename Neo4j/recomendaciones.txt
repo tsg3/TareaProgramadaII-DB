@@ -1,0 +1,40 @@
+## Productos
+
+LOAD CSV FROM "file:///C:/Users/este0/Desktop/Esteban/TEC/2019%20-%20II%20Semestre/Bases%20de%20Datos/Progra%202/MigracionSQLServer/Datos/Producto.csv" AS Productos
+CREATE (p:Producto{Nombre:Productos[3], IdProducto:toInteger(Productos[0]), IdArticulos:[], NumeroVentas:[]})
+
+## Articulos
+
+LOAD CSV FROM "file:///C:/Users/este0/Desktop/Esteban/TEC/2019%20-%20II%20Semestre/Bases%20de%20Datos/Progra%202/MigracionSQLServer/Datos/Articulo.csv" AS Articulos
+MATCH (p:Producto{IdProducto:toInteger(Articulos[1])})
+SET p.IdArticulos = p.IdArticulos + [toInteger(Articulos[0])]
+
+## Ventas
+
+LOAD CSV FROM "file:///C:/Users/este0/Desktop/Esteban/TEC/2019%20-%20II%20Semestre/Bases%20de%20Datos/Progra%202/MigracionSQLServer/Datos/ReporteVenta.csv" AS Ventas
+MATCH (p:Producto)
+WHERE ALL(x IN [toInteger(Ventas[1])] WHERE x IN p.IdArticulos) AND NONE(x IN p.NumeroVentas WHERE x = toInteger(Ventas[2]))
+SET p.NumeroVentas = filter(x in p.NumeroVentas where x<>[toInteger(Ventas[2])]) + [toInteger(Ventas[2])]
+
+MATCH (n:Producto)
+SET n.NumeroVentas = [i in range(0, size(n.NumeroVentas)-1)
+     WHERE i=0 OR n.NumeroVentas[i] <> n.NumeroVentas[i-1] | n.NumeroVentas[i] ]
+
+## Relaciones
+
+MATCH (p1:Producto), (p2:Producto)
+WHERE p1.IdProducto <> p2.IdProducto
+CREATE (p1)-[c1:CompradoCon]->(p2)
+
+MATCH (p1:Producto)-[c:CompradoCon]->(p2:Producto)
+WITH c, SIZE(FILTER(x IN p1.NumeroVentas WHERE x IN p2.NumeroVentas)) AS Cantidad
+SET c.Peso = Cantidad
+
+MATCH (p1:Producto)-[c:CompradoCon{Peso:0}]->(p2:Producto)
+DELETE c
+
+## Recomendaciones
+
+MATCH (p1:Producto{IdProducto:1})-[c:CompradoCon]->(p2:Producto)
+RETURN p2.Nombre
+ORDER BY c.Peso DESC, p2.Nombre ASC

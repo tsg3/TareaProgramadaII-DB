@@ -1,3 +1,6 @@
+CREATE DATABASE JOEC;
+USE JOEC;
+
 CREATE TABLE Pais (
 	IdPais INT NOT NULL IDENTITY PRIMARY KEY,
 	Nombre VARCHAR(50) NOT NULL
@@ -221,15 +224,19 @@ CREATE TABLE ReporteVenta (
 	IdReporteCaja INT NOT NULL,
 	IdArticulo INT NOT NULL,
 	NumeroVenta INT NOT NULL,
+	IdCliente INT NOT NULL,
 	FOREIGN KEY (IdReporteCaja) REFERENCES ReporteCaja(IdReporteCaja),
-	FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo)
+	FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo),
+	FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente)
 );
 
 CREATE TABLE ReporteDevolucion (
 	IdReporteCaja INT NOT NULL,
 	IdArticulo INT NOT NULL,
+	IdCliente INT NOT NULL,
 	FOREIGN KEY (IdReporteCaja) REFERENCES ReporteCaja(IdReporteCaja),
-	FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo)
+	FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo),
+	FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente)
 );
 
 CREATE TABLE Transporte (
@@ -259,3 +266,5 @@ CREATE TABLE EnvioArticulo (
 	FOREIGN KEY (IdEnvio) REFERENCES Envio(IdEnvio),
 	FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo)
 );
+
+EXEC sp_MSforeachtable @command1 = "DROP TABLE ?";

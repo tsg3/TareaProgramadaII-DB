@@ -3,7 +3,7 @@ import random
 import hashlib
 import json
 
-conn = psycopg2.connect(dbname='postgres', \
+conn = psycopg2.connect(dbname='postgresql', \
                         user='postgres', \
                         password='estebandcg1999', \
                         host='localhost', \
@@ -988,6 +988,7 @@ WHERE IdProducto = %s AND IdSucursal = %s;""",
             for _ in range(0, 3):
                 venta.append(a_vender[i].pop(random.randint(0, len(a_vender[i])-1)))
             costo = 0
+            cliente = clientes.pop(0)
             for j in venta:
                 cur.execute("""SELECT Costo
 From Articulo
@@ -995,13 +996,12 @@ WHERE IdArticulo = %s;""",
                             (j, ))
                 costo = costo + cur.fetchall()[0][0]
                 cur.execute("""INSERT INTO ReporteVenta
-(IdReporteCaja, IdArticulo, NumeroVenta) VALUES (%s, %s, %s);""",
-                            (i + 1, j, numero_venta))
+(IdReporteCaja, IdArticulo, NumeroVenta, IdCliente) VALUES (%s, %s, %s, %s);""",
+                            (i + 1, j, numero_venta, cliente))
                 cur.execute("""UPDATE Articulo
 SET EstadoArticulo = 'Periodo garantia'
 WHERE IdArticulo = %s;""",
                             (j, ))
-            cliente = clientes.pop(0)
             cur.execute("""UPDATE Cliente
 SET Puntos = %s
 WHERE IdCliente = %s;""",
@@ -1172,6 +1172,7 @@ WHERE IdProducto = %s AND IdSucursal = %s AND EstadoArticulo = 'En sucursal';"""
             for _ in range(0, 6):
                 venta.append(a_vender[i].pop(random.randint(0, len(a_vender[i])-1)))
             costo = 0
+            cliente = clientes.pop(0)
             for j in venta:
                 cur.execute("""SELECT Costo
 From Articulo
@@ -1179,13 +1180,12 @@ WHERE IdArticulo = %s;""",
                             (j, ))
                 costo = costo + cur.fetchall()[0][0]
                 cur.execute("""INSERT INTO ReporteVenta
-(IdReporteCaja, IdArticulo, NumeroVenta) VALUES (%s, %s, %s);""",
-                            (i + 4, j, numero_venta))
+(IdReporteCaja, IdArticulo, NumeroVenta, IdCliente) VALUES (%s, %s, %s, %s);""",
+                            (i + 4, j, numero_venta, cliente))
                 cur.execute("""UPDATE Articulo
 SET EstadoArticulo = 'Periodo garantia'
 WHERE IdArticulo = %s;""",
                             (j, ))
-            cliente = clientes.pop(0)
             cur.execute("""UPDATE Cliente
 SET Puntos = %s
 WHERE IdCliente = %s;""",
@@ -1268,15 +1268,14 @@ def insertar_datos():
     # DIA 2
     usuarios_dia_2()
     clientes_dia_2()
-    reportes_dia_1()
+    reportes_dia_2()
     envios_dia_2()
 
 def test():
-    cur.execute("""SELECT V.NumeroVenta
-FROM ReporteVenta AS V
-INNER JOIN Articulo AS A ON A.IdArticulo = V.IdArticulo
-WHERE A.IdProducto = 1;""")
+    cur.execute("""SELECT *
+FROM Articulo
+GROUP BY 1
+ORDER BY 1 ASC
+LIMIT 25;""")
     res = cur.fetchall()
-    res = [i[0] for i in res]
-    res = list(dict.fromkeys(res))
-    return res, len(res)
+    return res

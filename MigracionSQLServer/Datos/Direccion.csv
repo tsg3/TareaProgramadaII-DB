@@ -1,313 +1,314 @@
-1,1,470m del Centro
-2,2,190m del Parque
-3,3,300m del Parque
-4,4,320m del Super
-5,5,220m del Super
-6,6,90m del Parque
-7,7,240m del Parque
-8,8,270m de la Iglesia
-9,9,130m de la Escuela
-10,10,20m de la Escuela
-11,11,320m de la Iglesia
-12,12,70m de la Escuela
-13,13,390m del Parque
-14,14,270m del Super
-15,15,20m de la Iglesia
-16,16,230m de la Escuela
-17,17,300m del Centro
-18,18,260m de la Iglesia
-19,19,310m del Centro
-20,20,20m del Centro
-21,21,130m del Super
-22,22,320m de la Escuela
-23,23,420m del Parque
-24,24,120m del Parque
-25,25,210m de la Escuela
-26,26,310m del Super
-27,27,170m de la Escuela
-28,28,120m del Super
-29,29,90m del Parque
-30,30,40m de la Iglesia
-31,31,70m de la Escuela
-32,32,220m de la Iglesia
-33,33,490m del Super
-34,34,190m del Centro
-35,19,130m del Parque
-36,35,280m del Centro
-37,36,260m del Centro
-38,37,290m de la Escuela
-39,38,440m de la Escuela
-40,39,210m del Centro
-41,40,300m del Centro
-42,41,250m de la Escuela
-43,42,480m de la Iglesia
-44,43,200m de la Iglesia
-45,44,10m de la Escuela
-46,45,290m del Centro
-47,42,300m de la Iglesia
-48,23,200m de la Escuela
-49,46,20m del Centro
-50,47,430m del Centro
-51,48,170m del Super
-52,49,40m del Super
-53,50,310m del Centro
-54,51,440m del Parque
-55,52,20m del Centro
-56,53,310m de la Escuela
-57,54,370m del Parque
-58,55,290m del Super
-59,56,180m del Centro
-60,57,20m del Super
-61,58,360m del Super
-62,59,420m del Centro
-63,60,110m del Centro
-64,5,170m de la Escuela
-65,61,320m del Super
-66,62,160m de la Escuela
-67,63,410m del Super
-68,64,330m del Parque
-69,65,50m del Parque
-70,66,310m de la Escuela
-71,67,10m de la Escuela
-72,68,220m de la Escuela
-73,69,40m del Super
-74,70,210m de la Escuela
-75,71,390m del Parque
-76,72,330m del Centro
-77,73,110m del Parque
-78,74,440m de la Escuela
-79,75,90m del Parque
-80,76,490m del Centro
-81,77,360m del Super
-82,78,280m del Super
-83,79,110m de la Iglesia
-84,80,40m de la Escuela
-85,81,120m del Centro
-86,82,460m del Parque
-87,83,490m del Parque
-88,84,110m del Parque
-89,85,80m del Parque
-90,86,130m de la Escuela
-91,87,10m de la Iglesia
-92,58,340m de la Escuela
-93,88,20m del Centro
-94,89,330m del Centro
-95,90,500m del Parque
-96,91,210m de la Iglesia
-97,92,460m de la Iglesia
-98,93,150m del Centro
-99,94,280m del Super
-100,95,400m del Centro
-101,81,120m de la Iglesia
-102,96,270m del Parque
-103,97,40m de la Iglesia
-104,98,220m de la Iglesia
-105,99,100m de la Escuela
-106,100,90m de la Iglesia
-107,25,120m del Centro
-108,101,290m del Super
-109,83,60m de la Iglesia
-110,102,220m del Parque
-111,103,330m de la Escuela
-112,104,500m del Parque
-113,105,260m de la Iglesia
-114,106,280m de la Iglesia
-115,107,30m del Parque
-116,108,320m del Super
-117,109,200m de la Iglesia
-118,110,140m de la Escuela
-119,111,420m del Super
-120,68,400m del Centro
-121,112,390m de la Iglesia
-122,113,240m del Super
-123,6,220m del Parque
-124,33,500m del Super
-125,114,490m del Centro
-126,115,240m del Super
-127,116,200m del Super
-128,78,380m del Parque
-129,117,100m del Parque
-130,102,250m del Centro
-131,118,40m del Parque
-132,119,230m de la Iglesia
-133,41,270m del Super
-134,41,370m del Super
-135,120,320m de la Escuela
-136,121,380m de la Iglesia
-137,36,160m de la Iglesia
-138,114,470m del Parque
-139,122,170m de la Iglesia
-140,123,10m del Centro
-141,75,260m de la Iglesia
-142,42,150m de la Escuela
-143,124,200m del Super
-144,125,450m de la Iglesia
-145,7,320m del Centro
-146,126,10m del Super
-147,127,430m de la Escuela
-148,128,230m de la Escuela
-149,129,160m del Super
-150,130,220m del Centro
-151,36,40m del Super
-152,131,350m de la Iglesia
-153,132,310m de la Escuela
-154,133,130m del Centro
-155,134,450m del Centro
-156,51,160m de la Escuela
-157,90,320m del Parque
-158,135,480m del Super
-159,136,340m del Parque
-160,137,470m de la Iglesia
-161,138,20m de la Iglesia
-162,139,70m del Parque
-163,140,370m de la Escuela
-164,57,460m de la Iglesia
-165,141,160m del Centro
-166,142,480m del Parque
-167,61,260m de la Iglesia
-168,143,240m de la Iglesia
-169,144,150m del Parque
-170,138,90m de la Escuela
-171,145,180m del Parque
-172,146,120m del Super
-173,147,450m de la Escuela
-174,148,170m del Super
-175,119,240m del Super
-176,149,320m del Parque
-177,150,190m del Super
-178,151,160m de la Escuela
-179,152,90m del Centro
-180,153,380m del Parque
-181,15,110m del Super
-182,154,350m del Parque
-183,155,110m de la Iglesia
-184,47,350m de la Escuela
-185,156,300m del Parque
-186,157,40m del Centro
-187,158,30m de la Iglesia
-188,159,270m del Centro
-189,160,100m de la Escuela
-190,161,380m del Super
-191,162,90m del Super
-192,5,420m del Centro
-193,163,370m del Parque
-194,164,450m de la Iglesia
-195,165,400m de la Escuela
-196,166,150m de la Escuela
-197,122,150m del Super
-198,26,230m de la Escuela
-199,17,210m de la Escuela
-200,167,240m del Centro
-201,168,400m de la Escuela
-202,169,310m del Super
-203,170,70m del Parque
-204,33,80m del Super
-205,75,390m de la Iglesia
-206,37,20m de la Iglesia
-207,171,210m del Super
-208,93,80m de la Escuela
-209,87,490m del Super
-210,172,460m del Parque
-211,155,330m del Centro
-212,103,190m del Super
-213,173,120m de la Iglesia
-214,131,110m del Centro
-215,173,440m de la Iglesia
-216,174,120m de la Escuela
-217,175,10m de la Escuela
-218,176,320m de la Escuela
-219,177,310m del Super
-220,157,320m del Super
-221,117,420m del Super
-222,161,470m de la Escuela
-223,123,280m del Parque
-224,178,480m del Centro
-225,117,160m del Super
-226,179,160m de la Escuela
-227,180,70m del Parque
-228,104,370m del Super
-229,181,490m del Parque
-230,182,160m del Centro
-231,183,440m de la Escuela
-232,46,400m de la Escuela
-233,184,360m del Centro
-234,115,470m de la Escuela
-235,185,70m de la Iglesia
-236,51,370m del Super
-237,166,150m del Centro
-238,186,60m del Parque
-239,36,440m de la Iglesia
-240,187,320m del Parque
-241,188,390m de la Escuela
-242,189,280m de la Iglesia
-243,190,50m de la Escuela
-244,191,240m del Centro
-245,192,90m del Parque
-246,193,220m del Centro
-247,19,30m de la Escuela
-248,120,10m del Parque
-249,1,370m de la Iglesia
-250,194,80m del Centro
-251,108,60m del Parque
-252,147,480m de la Escuela
-253,195,70m del Parque
-254,196,200m del Super
-255,197,110m del Parque
-256,198,20m de la Escuela
-257,169,490m de la Escuela
-258,199,200m del Super
-259,200,10m de la Escuela
-260,39,310m del Centro
-261,160,460m de la Iglesia
-262,15,170m del Centro
-263,77,380m del Super
-264,201,330m del Parque
-265,27,500m del Centro
-266,202,410m del Super
-267,27,480m de la Escuela
-268,167,260m del Centro
-269,18,430m del Super
-270,203,340m del Centro
-271,204,140m del Parque
-272,205,150m de la Escuela
-273,166,390m de la Iglesia
-274,206,410m de la Escuela
-275,41,30m del Centro
-276,207,10m del Centro
-277,6,80m del Parque
-278,186,240m de la Escuela
-279,208,320m del Super
-280,19,180m del Super
-281,206,270m del Centro
-282,209,370m del Centro
-283,210,390m del Parque
-284,83,210m del Super
-285,211,490m del Centro
-286,212,390m del Centro
-287,213,290m de la Escuela
-288,19,280m de la Iglesia
-289,214,120m de la Iglesia
-290,113,50m del Parque
-291,134,70m del Super
-292,215,370m del Centro
-293,43,120m del Super
-294,85,370m de la Iglesia
-295,216,70m del Super
-296,196,180m del Parque
-297,217,80m del Super
-298,218,200m de la Iglesia
-299,128,420m de la Iglesia
-300,219,450m del Super
-301,124,470m del Super
-302,220,170m del Centro
-303,150,270m del Centro
-304,9,310m del Centro
-305,84,350m de la Iglesia
-306,221,310m de la Iglesia
-307,17,350m del Parque
-308,100,40m del Super
-309,159,170m del Super
-310,101,240m del Super
-311,222,460m del Super
-312,16,300m de la Escuela
-313,223,470m de la Escuela
+1,1,450m del Parque
+2,2,180m del Parque
+3,3,60m del Super
+4,4,430m del Parque
+5,5,290m de la Iglesia
+6,6,130m del Centro
+7,7,40m del Super
+8,8,440m de la Iglesia
+9,9,170m del Parque
+10,10,370m de la Iglesia
+11,11,420m del Centro
+12,12,70m del Parque
+13,13,280m del Parque
+14,14,490m del Centro
+15,15,450m de la Iglesia
+16,16,330m del Parque
+17,17,440m del Parque
+18,8,90m del Super
+19,18,250m del Centro
+20,19,160m de la Iglesia
+21,20,70m del Super
+22,21,220m del Super
+23,22,190m del Centro
+24,23,30m de la Escuela
+25,13,180m del Centro
+26,24,440m del Centro
+27,25,240m del Super
+28,12,80m del Super
+29,13,400m del Centro
+30,26,150m del Centro
+31,19,20m de la Iglesia
+32,27,370m del Super
+33,28,180m del Parque
+34,29,10m del Super
+35,30,460m de la Iglesia
+36,31,130m de la Escuela
+37,32,350m del Centro
+38,27,340m de la Iglesia
+39,33,400m del Parque
+40,34,280m de la Iglesia
+41,35,110m de la Escuela
+42,36,60m de la Escuela
+43,37,50m del Centro
+44,38,170m de la Iglesia
+45,34,220m de la Escuela
+46,39,350m del Parque
+47,40,50m de la Escuela
+48,41,410m del Centro
+49,42,40m de la Escuela
+50,43,20m del Super
+51,44,490m de la Escuela
+52,45,280m del Parque
+53,46,60m del Centro
+54,47,160m del Super
+55,48,60m de la Escuela
+56,49,130m del Parque
+57,50,170m del Parque
+58,51,260m del Parque
+59,52,440m de la Iglesia
+60,53,90m de la Iglesia
+61,36,310m del Parque
+62,54,210m del Parque
+63,55,90m del Super
+64,54,240m del Parque
+65,43,260m del Super
+66,56,110m del Parque
+67,57,360m del Super
+68,58,280m del Super
+69,59,240m de la Iglesia
+70,60,340m de la Escuela
+71,61,110m de la Iglesia
+72,62,110m de la Escuela
+73,63,260m del Parque
+74,64,350m de la Iglesia
+75,11,340m de la Iglesia
+76,65,100m de la Escuela
+77,66,300m de la Escuela
+78,67,300m de la Escuela
+79,68,30m del Centro
+80,69,350m del Parque
+81,70,240m de la Iglesia
+82,71,430m del Parque
+83,72,30m de la Escuela
+84,73,230m del Parque
+85,16,300m de la Iglesia
+86,71,130m de la Escuela
+87,74,380m del Parque
+88,75,40m del Parque
+89,34,20m del Super
+90,76,230m del Parque
+91,77,440m del Centro
+92,78,500m del Super
+93,79,340m del Super
+94,21,280m del Super
+95,80,420m de la Iglesia
+96,81,490m del Centro
+97,64,160m de la Escuela
+98,82,180m de la Escuela
+99,83,440m de la Iglesia
+100,18,260m del Centro
+101,34,120m del Parque
+102,84,210m de la Iglesia
+103,31,380m del Parque
+104,85,60m del Super
+105,86,270m de la Escuela
+106,87,360m del Centro
+107,88,430m del Super
+108,7,490m de la Iglesia
+109,89,470m del Centro
+110,13,320m del Centro
+111,90,110m del Parque
+112,26,10m del Super
+113,91,490m del Super
+114,92,370m del Centro
+115,93,300m del Super
+116,94,210m de la Escuela
+117,95,490m del Centro
+118,96,250m de la Escuela
+119,97,480m del Super
+120,98,440m del Parque
+121,99,430m del Super
+122,17,390m de la Escuela
+123,19,420m de la Iglesia
+124,14,460m del Parque
+125,40,210m del Centro
+126,14,10m del Super
+127,100,20m del Super
+128,11,240m de la Escuela
+129,101,40m de la Escuela
+130,102,20m del Super
+131,103,310m de la Iglesia
+132,104,100m del Centro
+133,105,20m de la Iglesia
+134,106,20m de la Iglesia
+135,107,190m del Super
+136,108,420m de la Escuela
+137,109,280m del Centro
+138,110,100m del Parque
+139,111,160m del Parque
+140,109,10m de la Escuela
+141,112,180m de la Escuela
+142,89,340m de la Escuela
+143,113,80m del Super
+144,16,30m del Parque
+145,114,430m del Parque
+146,115,370m de la Escuela
+147,116,270m de la Escuela
+148,117,320m del Super
+149,118,50m de la Iglesia
+150,13,450m de la Iglesia
+151,119,450m del Centro
+152,120,160m del Parque
+153,121,280m de la Iglesia
+154,75,150m del Parque
+155,122,190m del Centro
+156,123,70m del Super
+157,41,350m del Centro
+158,78,490m del Centro
+159,124,290m de la Iglesia
+160,122,250m de la Iglesia
+161,108,500m de la Iglesia
+162,4,340m del Centro
+163,125,70m del Parque
+164,126,430m de la Iglesia
+165,38,200m de la Iglesia
+166,55,210m de la Iglesia
+167,13,400m del Parque
+168,127,30m del Centro
+169,128,440m del Super
+170,10,480m de la Escuela
+171,129,380m de la Iglesia
+172,130,110m del Centro
+173,53,250m del Super
+174,111,60m del Parque
+175,17,240m de la Escuela
+176,131,60m del Super
+177,14,400m de la Escuela
+178,132,80m del Super
+179,133,190m de la Escuela
+180,134,310m de la Escuela
+181,90,60m del Parque
+182,33,310m de la Escuela
+183,135,330m del Super
+184,136,440m del Super
+185,137,250m del Centro
+186,138,120m del Parque
+187,74,130m de la Escuela
+188,139,90m del Parque
+189,140,310m del Parque
+190,141,260m de la Iglesia
+191,142,140m de la Iglesia
+192,143,110m del Centro
+193,144,500m de la Escuela
+194,145,340m de la Escuela
+195,146,30m de la Iglesia
+196,16,460m del Parque
+197,147,160m del Super
+198,40,40m del Centro
+199,104,190m del Centro
+200,95,290m del Parque
+201,75,450m de la Escuela
+202,65,120m del Parque
+203,148,140m de la Iglesia
+204,104,490m de la Escuela
+205,65,500m de la Escuela
+206,149,110m de la Escuela
+207,150,170m del Parque
+208,60,40m del Centro
+209,151,20m de la Iglesia
+210,152,200m del Parque
+211,153,410m del Centro
+212,74,50m del Centro
+213,154,230m del Centro
+214,155,420m del Centro
+215,65,450m de la Iglesia
+216,156,60m del Super
+217,157,110m del Centro
+218,158,90m del Super
+219,159,340m del Centro
+220,45,270m del Super
+221,160,260m de la Escuela
+222,110,40m de la Iglesia
+223,161,20m del Parque
+224,129,210m de la Escuela
+225,162,350m del Centro
+226,6,490m del Super
+227,131,300m del Centro
+228,163,220m del Centro
+229,160,130m del Centro
+230,13,140m de la Escuela
+231,164,200m de la Iglesia
+232,144,370m del Super
+233,165,180m de la Escuela
+234,166,380m del Centro
+235,167,310m del Parque
+236,168,270m del Super
+237,169,150m del Super
+238,170,120m del Parque
+239,138,120m del Super
+240,171,400m de la Iglesia
+241,172,460m de la Iglesia
+242,173,490m del Centro
+243,100,410m del Centro
+244,174,190m del Centro
+245,133,400m del Parque
+246,135,400m del Centro
+247,136,420m de la Iglesia
+248,175,60m del Super
+249,23,260m del Super
+250,176,440m de la Iglesia
+251,177,80m del Parque
+252,178,100m del Parque
+253,19,340m del Super
+254,179,70m de la Iglesia
+255,155,220m del Super
+256,180,70m del Parque
+257,181,490m del Parque
+258,70,270m del Centro
+259,182,90m del Parque
+260,183,360m de la Escuela
+261,56,480m del Centro
+262,148,180m del Centro
+263,122,500m del Centro
+264,184,480m de la Iglesia
+265,185,170m del Centro
+266,108,490m del Super
+267,186,210m de la Escuela
+268,149,400m del Super
+269,86,260m de la Iglesia
+270,97,240m de la Escuela
+271,27,230m del Parque
+272,187,110m del Super
+273,188,280m de la Iglesia
+274,189,270m de la Iglesia
+275,190,230m del Centro
+276,191,210m del Centro
+277,192,500m de la Iglesia
+278,88,340m del Centro
+279,16,310m del Super
+280,176,410m de la Escuela
+281,193,380m del Parque
+282,136,150m del Centro
+283,194,440m del Super
+284,195,240m del Super
+285,101,210m de la Iglesia
+286,196,100m del Centro
+287,140,210m del Parque
+288,197,130m del Super
+289,124,240m del Parque
+290,108,310m de la Iglesia
+291,198,170m de la Escuela
+292,199,290m de la Iglesia
+293,200,90m del Centro
+294,59,230m de la Escuela
+295,201,330m del Parque
+296,179,470m del Super
+297,202,120m de la Escuela
+298,203,130m de la Escuela
+299,84,20m del Super
+300,204,180m de la Iglesia
+301,205,380m del Centro
+302,180,150m de la Escuela
+303,199,180m de la Escuela
+304,206,260m del Super
+305,181,450m del Super
+306,207,180m del Super
+307,131,320m de la Escuela
+308,208,480m del Centro
+309,61,60m de la Iglesia
+310,96,310m de la Escuela
+311,209,100m del Centro
+312,6,330m de la Iglesia
+313,210,190m del Centro
+314,190,150m de la Escuela

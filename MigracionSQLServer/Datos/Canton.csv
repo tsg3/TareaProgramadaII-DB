@@ -1,80 +1,81 @@
-1,1,La Union
-2,2,Dota
-3,3,Naranjo
-4,4,Abangares
-5,5,Sarapiqui
-6,5,Flores
-7,3,Guatuso
-8,6,Pococi
-9,4,Santa Cruz
-10,4,Nicoya
-11,1,El Guarco
+1,1,Flores
+2,2,Corredores
+3,2,Montes de Oro
+4,3,Turrubares
+5,1,San Rafael
+6,4,Jimenez
+7,3,Desamparados
+8,5,Liberia
+9,5,La Cruz
+10,4,Alvarado
+11,4,La Union
 12,6,Talamanca
-13,1,Cartago
-14,6,Siquirres
-15,2,Desamparados
-16,7,Montes de Oro
-17,3,Zarcero
-18,3,Los Chiles
-19,3,Palmares
-20,1,Turrialba
-21,2,Perez Zeledon
-22,2,Santa Ana
-23,6,Limon
-24,7,Osa
-25,5,Belen
-26,4,Carrillo
-27,3,Upala
-28,5,San Pablo
-29,7,Corredores
-30,1,Jimenez
-31,2,Moravia
-32,5,Barva
-33,5,Santo Domingo
-34,6,Guacimo
-35,3,Rio Cuarto
-36,3,Orotina
-37,5,Santa Barbara
-38,2,Montes de Oca
-39,2,Tibas
-40,2,Curridabat
-41,7,Esparza
-42,7,Buenos Aires
-43,7,Puntarenas
-44,1,Paraiso
-45,4,Tilaran
-46,2,Mora
-47,4,Liberia
-48,3,Poas
-49,4,La Cruz
-50,2,Goicoechea
-51,1,Oreamuno
-52,3,Atenas
-53,3,San Ramon
-54,3,San Mateo
-55,2,Leon Cortes
-56,2,Alajuelita
-57,1,Alvarado
-58,4,Canas
-59,4,Hojancha
-60,5,Heredia
-61,4,Nandayure
-62,2,Aserri
-63,5,San Rafael
-64,2,Escazu
-65,7,Garabito
-66,7,Coto Brus
-67,3,San Carlos
-68,2,Vazquez de Coronado
-69,3,Grecia
-70,7,Quepos
-71,2,Acosta
-72,2,Turrubares
-73,3,Sarchi
-74,7,Parrita
-75,7,Golfito
-76,6,Matina
-77,2,Tarrazu
-78,4,Bagaces
-79,5,San Isidro
-80,3,Alajuela
+13,4,El Guarco
+14,7,Palmares
+15,1,San Isidro
+16,7,Guatuso
+17,6,Siquirres
+18,6,Pococi
+19,3,Acosta
+20,5,Abangares
+21,7,Alajuela
+22,3,San Jose
+23,3,Perez Zeledon
+24,1,Santa Barbara
+25,4,Cartago
+26,5,Bagaces
+27,5,Canas
+28,3,Moravia
+29,6,Guacimo
+30,4,Turrialba
+31,4,Paraiso
+32,5,Nicoya
+33,3,Tibas
+34,7,San Ramon
+35,2,Garabito
+36,7,Atenas
+37,6,Limon
+38,3,Puriscal
+39,3,Vazquez de Coronado
+40,1,Santo Domingo
+41,2,Quepos
+42,7,Orotina
+43,7,San Mateo
+44,5,Carrillo
+45,1,Heredia
+46,3,Montes de Oca
+47,7,Poas
+48,5,Santa Cruz
+49,5,Tilaran
+50,4,Oreamuno
+51,7,Los Chiles
+52,7,Grecia
+53,2,Osa
+54,5,Nandayure
+55,2,Esparza
+56,2,Buenos Aires
+57,1,Sarapiqui
+58,2,Golfito
+59,3,Curridabat
+60,2,Parrita
+61,7,San Carlos
+62,3,Tarrazu
+63,1,Belen
+64,7,Naranjo
+65,2,Puntarenas
+66,3,Alajuelita
+67,7,Sarchi
+68,7,Zarcero
+69,7,Upala
+70,5,Hojancha
+71,6,Matina
+72,2,Coto Brus
+73,3,Mora
+74,1,San Pablo
+75,3,Escazu
+76,7,Rio Cuarto
+77,1,Barva
+78,3,Leon Cortes
+79,3,Aserri
+80,3,Goicoechea
+81,3,Santa Ana

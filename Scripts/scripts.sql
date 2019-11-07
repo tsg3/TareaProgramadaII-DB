@@ -230,7 +230,7 @@ BEGIN
 				FechaNacimiento = @FechaNacimiento;
 		IF(@ex2 IS NULL)
 		BEGIN
-			PRINT 'Informacion del usuario no coincide';
+			PRINT 'ERROR: La identificación proporcionada no coincide con la demás información del usuario!';
 			ROLLBACK TRAN
 			RETURN 1;
 		END
@@ -287,13 +287,13 @@ BEGIN
 			WHERE IdArticulo = @Idx;
 		IF(@IdS1 != @IdSx)
 		BEGIN
-			PRINT 'Los articulos no pertenecen a la misma sucursal';
+			PRINT 'ERROR: Los articulos no pertenecen a la misma sucursal!';
 			ROLLBACK TRAN
 			RETURN 1;
 		END
 		IF(@IdEx != 'En sucursal')
 		BEGIN
-			PRINT 'Los articulos tienen que estar disponibles';
+			PRINT 'ERROR: Los articulos tienen que estar disponibles!';
 			ROLLBACK TRAN
 			RETURN 1;
 		END
@@ -338,7 +338,7 @@ BEGIN
 	UPDATE Cliente
 		SET Puntos = Puntos + @CostoT / 10000
 		WHERE IdCliente = @idC;
-	PRINT 'SUCCESS';
+	PRINT 'ÉXITO: Transacción realizada!';
 	COMMIT TRAN
 	SET NOCOUNT OFF;
 	RETURN 1;
@@ -355,3 +355,118 @@ EXEC RealizarCompra 'g6d4df642ve96s4r9tr0', 'Micail',
 					'300m del Parque', 'San Josecito', 
 					'San Rafael', 'Heredia', 
 					'Costa Rica', @ListaArticulos;
+
+
+
+-- Consulta ineficiente
+
+
+CREATE FUNCTION dbo.CalcularPuntos(
+	@Dinero INT)
+	RETURNS INT AS
+	BEGIN
+		RETURN @Dinero / 10000;
+	END
+DROP FUNCTION CalcularPuntos;
+
+
+SELECT SQ2.Nombre, 
+		SQ2.ApellidoPat, 
+		SQ2.ApellidoMat, 
+	(SELECT DATEDIFF(hour, FechaNacimiento, GETDATE()) / 8766
+		FROM Usuario AS U
+		INNER JOIN Cliente AS C ON C.IdUsuario = U.IdUsuario
+		WHERE C.IdCliente = A.IdCliente) AS Edad,
+	(SELECT COUNT(IdArticulo)
+		FROM ReporteVenta
+		WHERE IdCliente = A.IdCliente) AS ArticulosComprados,
+	(SELECT COUNT(DISTINCT NumeroVenta)
+		FROM ReporteVenta
+		WHERE IdCliente = A.IdCliente) AS NumeroFacturas,
+	SQ1.UltimaCompra,
+	SQ1.FechaUltimaCompra,
+	SQ.DineroGastado,
+	SQ.PuntosObtenidos,
+	SQ.Ganador,
+	SQ.Premio
+FROM Cliente AS A
+LEFT JOIN (
+    SELECT RV.IdCliente, 
+		SUM(Ar.Costo) AS DineroGastado,
+		(CASE
+			WHEN (SUM(Ar.Costo) > 1000000) THEN 'Si'
+			ELSE 'No'
+		END) AS Ganador, 
+		(SELECT dbo.CalcularPuntos(SUM(Ar.Costo))) AS PuntosObtenidos,
+		(SELECT TOP 1 Nombre 
+			FROM Producto
+			WHERE SUM(Ar.Costo) > 1000000 AND (IdProducto = 23 OR IdProducto = 24)
+			ORDER BY NEWID()) AS Premio
+	FROM ReporteVenta AS RV
+	INNER JOIN Articulo AS Ar ON Ar.IdArticulo = RV.IdArticulo
+	GROUP BY RV.IdCliente) AS SQ ON SQ.IdCliente = A.IdCliente
+LEFT JOIN (SELECT Cl.IdCliente, Us.Nombre, Us.ApellidoPat, Us.ApellidoMat
+	FROM Usuario Us
+	INNER JOIN Cliente AS Cl ON Cl.IdUsuario = Us.IdUsuario
+	GROUP BY Cl.IdCliente, Us.Nombre, Us.ApellidoPat, Us.ApellidoMat) AS SQ2 ON SQ2.IdCliente = A.IdCliente
+OUTER APPLY (
+	SELECT TOP 1 RV.NumeroVenta AS UltimaCompra, 
+		RV.IdCliente,
+		CONVERT(DATE, RC.FechaReporte, 23) AS FechaUltimaCompra
+	FROM ReporteVenta AS RV
+	INNER JOIN ReporteCaja AS RC ON RC.IdReporteCaja = RV.IdReporteCaja
+	WHERE RV.IdCliente = A.IdCliente
+	GROUP BY RV.NumeroVenta, RC.FechaReporte, RV.IdCliente
+	ORDER BY RC.FechaReporte DESC) AS SQ1
+ORDER BY DineroGastado DESC;
+
+
+-- Optimizacion (Progreso)
+
+
+SELECT SQ2.Nombre, 
+		SQ2.ApellidoPat, 
+		SQ2.ApellidoMat, 
+	(SELECT DATEDIFF(hour, FechaNacimiento, GETDATE()) / 8766
+		FROM Usuario AS U
+		INNER JOIN Cliente AS C ON C.IdUsuario = U.IdUsuario
+		WHERE C.IdCliente = A.IdCliente) AS Edad,
+	(SELECT COUNT(IdArticulo)
+		FROM ReporteVenta
+		WHERE IdCliente = A.IdCliente) AS ArticulosComprados,
+	(SELECT COUNT(DISTINCT NumeroVenta)
+		FROM ReporteVenta
+		WHERE IdCliente = A.IdCliente) AS NumeroFacturas,
+	SQ1.UltimaCompra,
+	SQ1.FechaUltimaCompra,
+	SQ.DineroGastado,
+	SQ.PuntosObtenidos,
+	SQ.Ganador,
+	SQ.Premio
+FROM Cliente AS A
+LEFT JOIN (
+    SELECT RV.IdCliente, 
+		SUM(Ar.Costo) AS DineroGastado,
+		(CASE
+			WHEN (SUM(Ar.Costo) > 1000000) THEN 'Si'
+			ELSE 'No'
+		END) AS Ganador, 
+		(SELECT dbo.CalcularPuntos(SUM(Ar.Costo))) AS PuntosObtenidos, 
+		(SELECT TOP 1 Nombre 
+			FROM Producto
+			WHERE SUM(Ar.Costo) > 1000000 AND IdProducto = FLOOR(RAND()*(25-23)+23)) AS Premio
+	FROM ReporteVenta AS RV
+	INNER JOIN Articulo AS Ar ON Ar.IdArticulo = RV.IdArticulo
+	GROUP BY RV.IdCliente) AS SQ ON SQ.IdCliente = A.IdCliente
+LEFT JOIN (SELECT Cl.IdCliente, Us.Nombre, Us.ApellidoPat, Us.ApellidoMat
+	FROM Usuario Us
+	INNER JOIN Cliente AS Cl ON Cl.IdUsuario = Us.IdUsuario
+	GROUP BY Cl.IdCliente, Us.Nombre, Us.ApellidoPat, Us.ApellidoMat) AS SQ2 ON SQ2.IdCliente = A.IdCliente
+OUTER APPLY (
+	SELECT MAX(RV.NumeroVenta) AS UltimaCompra,
+		CONVERT(DATE, RC.FechaReporte, 23) AS FechaUltimaCompra
+	FROM ReporteVenta AS RV
+	INNER JOIN ReporteCaja AS RC ON RC.IdReporteCaja = RV.IdReporteCaja
+	WHERE RV.IdCliente = A.IdCliente
+	GROUP BY RC.FechaReporte) AS SQ1
+ORDER BY DineroGastado DESC;

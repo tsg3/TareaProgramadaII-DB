@@ -1,4 +1,4 @@
-USE JOEC;
+USE JOECv2;
 
 DBCC CHECKIDENT ('Articulo', RESEED, 1)  
 

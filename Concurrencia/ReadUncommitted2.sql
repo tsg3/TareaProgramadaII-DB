@@ -1,0 +1,9 @@
+USE Sk84TEC_SQL;
+SET TRANSACTION ISOLATION LEVEL
+READ UNCOMMITTED;
+BEGIN TRAN SelectUncommittedTest
+
+SELECT * FROM Usuario
+WHERE Usuario.IdDireccion = 20;
+
+COMMIT TRAN SelectUncommittedTest;

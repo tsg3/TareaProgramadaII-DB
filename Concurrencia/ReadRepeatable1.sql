@@ -1,0 +1,13 @@
+USE Sk84TEC_SQL;
+
+SET TRANSACTION 
+ISOLATION LEVEL REPEATABLE READ;
+BEGIN TRAN ReadRepeatableTest;
+
+	SELECT * FROM Usuario
+	WHERE Usuario.IdUsuario = 56;
+
+	SELECT * FROM Usuario
+	WHERE Usuario.IdUsuario = 56;
+
+COMMIT TRAN ReadRepeatableTest;

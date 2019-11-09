@@ -717,3 +717,69 @@ EXEC CargarPromocionesXML @XML;
 -- SP con table-valued parameters
 
 
+CREATE TYPE ListaPromociones AS TABLE(
+	IdBase INT,
+	Sucursal INT,
+	Fin DATETIME,
+	Porcentaje INT,
+	Producto INT
+);
+DROP TYPE ListaPromociones;
+
+
+CREATE PROCEDURE CargarPromocionesTVP (
+	@Archivo AS dbo.ListaPromociones READONLY)
+	AS
+	BEGIN
+		BEGIN TRAN
+
+		SET NOCOUNT ON;
+		SET IDENTITY_INSERT dbo.Promocion ON;
+		DECLARE @i INT;
+		SET @i = 1;
+		DECLARE @n INT;
+		SELECT @n = MAX(IdBase) FROM @Archivo;
+		DECLARE @offset INT;
+		SELECT @offset = MAX(IdPromocion) FROM Promocion;
+		DECLARE @fec DATETIME;
+		SELECT @fec = GETDATE();
+		WHILE (@i <= @n)
+		BEGIN
+			INSERT INTO Promocion (IdPromocion, IdSucursal, FechaHoraInicio, FechaHoraFin, Porcentaje)
+				SELECT DISTINCT @offset + @i, Sucursal, @fec, Fin, Porcentaje
+					FROM @Archivo
+					WHERE IdBase = @i;
+			INSERT INTO PromocionProducto (IdPromocion, IdProducto)
+				SELECT @offset + @i, Producto
+					FROM @Archivo
+					WHERE IdBase = @i;
+			SET @i = @i + 1;
+		END
+		SET	NOCOUNT OFF;
+		SET IDENTITY_INSERT dbo.Promocion OFF;
+
+		COMMIT TRAN
+		RETURN 1;
+	END;
+DROP PROCEDURE CargarPromocionesTVP;
+
+
+DECLARE @TVP AS ListaPromociones;
+INSERT @TVP (IdBase, Sucursal, Fin, Porcentaje, Producto) VALUES
+(1, 3, CAST('2019-12-15 23:59:59.599' AS DATETIME), 25, 2),
+(1, 3, CAST('2019-12-15 23:59:59.599' AS DATETIME), 25, 13),
+(1, 3, CAST('2019-12-15 23:59:59.599' AS DATETIME), 25, 14),
+(2, 2, CAST('2019-11-27 23:59:59.599' AS DATETIME), 15, 5),
+(2, 2, CAST('2019-11-27 23:59:59.599' AS DATETIME), 15, 11);
+EXEC CargarPromocionesTVP @TVP;
+
+SELECT * FROM Promocion;
+SELECT * FROM PromocionProducto;
+
+
+
+
+
+-- SP con cursores
+
+

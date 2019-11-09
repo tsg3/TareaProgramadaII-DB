@@ -638,3 +638,82 @@ EXEC DevolverArticulo 2, 149;
 -- SP con XML
 
 
+CREATE PROCEDURE CargarPromocionesXML (
+	@Archivo AS XML)
+	AS
+	BEGIN
+		BEGIN TRAN
+
+		SET NOCOUNT ON;
+		SET IDENTITY_INSERT dbo.Promocion ON;
+		DECLARE @Temp TABLE ( 
+			IdTemp INT,
+			Sucursal INT,
+			Fin DATETIME,
+			Porcentaje INT,
+			Producto INT
+		);
+		INSERT INTO @Temp (IdTemp, Sucursal, Fin, Porcentaje, Producto)
+		SELECT x.v.value('@id', 'INT'),
+			x.v.value('@sucursal', 'INT'),
+			x.v.value('@fin', 'DATETIME'),
+			x.v.value('@porcentaje', 'INT'),
+			y.v.value('@id', 'INT')
+		FROM @Archivo.nodes('lista/promocion') AS x(v)
+		CROSS APPLY x.v.nodes('producto') AS y(v);
+		DECLARE @i INT;
+		SET @i = 1;
+		DECLARE @n INT;
+		SELECT @n = MAX(IdTemp) FROM @Temp;
+		DECLARE @offset INT;
+		SELECT @offset = MAX(IdPromocion) FROM Promocion;
+		DECLARE @fec DATETIME;
+		SELECT @fec = GETDATE();
+		WHILE (@i <= @n)
+		BEGIN
+			INSERT INTO Promocion (IdPromocion, IdSucursal, FechaHoraInicio, FechaHoraFin, Porcentaje)
+				SELECT DISTINCT @offset + @i, Sucursal, @fec, Fin, Porcentaje
+					FROM @Temp
+					WHERE IdTemp = @i;
+			INSERT INTO PromocionProducto (IdPromocion, IdProducto)
+				SELECT @offset + @i, Producto
+					FROM @Temp
+					WHERE IdTemp = @i;
+			SET @i = @i + 1;
+		END
+		SET	NOCOUNT OFF;
+		SET IDENTITY_INSERT dbo.Promocion OFF;
+
+		COMMIT TRAN
+		RETURN 1;
+	END;
+DROP PROCEDURE CargarPromocionesXML;
+
+
+DECLARE @XML AS XML;
+SET @XML =	'<lista>
+						<promocion id="1"
+							sucursal="3" 
+							fin="2019-12-15 23:59:59.599"
+							porcentaje="25">
+							<producto id="2"></producto>
+							<producto id="13"></producto>
+							<producto id="14"></producto>
+						</promocion>
+						<promocion id="2"
+							sucursal="2" 
+							fin="2019-11-27 23:59:59.599"
+							porcentaje="15">
+							<producto id="5"></producto>
+							<producto id="11"></producto>
+						</promocion>
+					</lista>';
+EXEC CargarPromocionesXML @XML;
+
+
+
+
+
+-- SP con table-valued parameters
+
+

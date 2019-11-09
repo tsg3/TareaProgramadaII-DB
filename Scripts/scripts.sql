@@ -783,3 +783,63 @@ SELECT * FROM PromocionProducto;
 -- SP con cursores
 
 
+CREATE PROCEDURE AnalizarInventario
+	AS BEGIN
+		SET NOCOUNT ON;
+		DECLARE SucursalCursor CURSOR 
+				LOCAL 
+				SCROLL
+			FOR SELECT IdSucursal
+					FROM Sucursal;
+		DECLARE @producto INT;
+		DECLARE @sucursal INT;
+		DECLARE @i INT;
+		DECLARE @cantidad INT;
+		SET @i = 1;
+		OPEN ProductosCursor;
+		OPEN SucursalCursor;
+		FETCH NEXT FROM ProductosCursor INTO 
+			@producto;
+		FETCH NEXT FROM SucursalCursor INTO 
+			@sucursal;
+		WHILE (@@FETCH_STATUS = 0)
+		BEGIN
+			WHILE (@@FETCH_STATUS = 0)
+			BEGIN
+				SELECT @cantidad = COUNT(1)
+					FROM Articulo
+					WHERE IdSucursal = @sucursal AND IdProducto = @producto AND EstadoArticulo = 'En sucursal';
+				PRINT CAST(@i AS VARCHAR) + 
+					' : En la sucursal ' + 
+					CAST(@sucursal AS VARCHAR) + 
+					' hay ' + 
+					CAST(@cantidad AS VARCHAR) +
+					' articulos del producto ' + 
+					CAST(@producto AS VARCHAR);
+				FETCH NEXT FROM SucursalCursor INTO 
+					@sucursal;
+				SET @i = @i + 1;
+			END
+			FETCH FIRST FROM SucursalCursor INTO 
+				@sucursal;
+			FETCH NEXT FROM ProductosCursor INTO 
+				@producto;
+		END
+		CLOSE ProductosCursor;
+		CLOSE SucursalCursor;
+		DEALLOCATE ProductosCursor;
+		DEALLOCATE SucursalCursor;
+		SET NOCOUNT OFF;
+		RETURN 1;
+	END;
+DROP PROCEDURE AnalizarInventario;
+
+
+DECLARE ProductosCursor CURSOR 
+		GLOBAL 
+		FORWARD_ONLY 
+		FAST_FORWARD 
+		READ_ONLY
+	FOR SELECT IdProducto
+			FROM Producto;
+EXEC AnalizarInventario;

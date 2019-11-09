@@ -421,7 +421,7 @@ OUTER APPLY (
 ORDER BY DineroGastado DESC;
 
 
--- Optimizacion (Progreso)
+-- Optimizacion
 
 
 SELECT SQ2.Nombre, 
@@ -470,3 +470,171 @@ OUTER APPLY (
 	WHERE RV.IdCliente = A.IdCliente
 	GROUP BY RC.FechaReporte) AS SQ1
 ORDER BY DineroGastado DESC;
+
+
+-- SP transaccional de dos niveles
+
+
+CREATE PROCEDURE InsertarReporteDev (
+	@Articulo INT,
+	@Cliente INT,
+	@ReporteOld INT OUTPUT,
+	@Reporte INT OUTPUT,
+	@NumeroVenta INT OUTPUT, 
+	@Sucursal INT OUTPUT)
+	AS
+	BEGIN
+		BEGIN TRAN
+
+		DECLARE @exA INT;
+		SELECT @exA = IdArticulo, @Sucursal = IdSucursal
+			FROM Articulo
+			WHERE IdArticulo = @Articulo AND EstadoArticulo = 'Periodo garantia';
+		IF (@Sucursal IS NULL OR @exA IS NULL)
+		BEGIN
+			PRINT 'ERROR: El artículo que se quiere devolver no está en periodo de garantía!';
+			ROLLBACK TRAN
+			RETURN 1;
+		END
+
+		DECLARE @relAC INT;
+		SELECT @relAC = IdCliente, @NumeroVenta = NumeroVenta, @ReporteOld = IdReporteCaja
+			FROM ReporteVenta
+			WHERE IdArticulo = @Articulo AND IdCliente = @Cliente;
+		IF (@relAC IS NULL)
+		BEGIN
+			PRINT 'ERROR: La devolución del artículo la debe realizar el cliente a la cuál la compra está registrada!';
+			ROLLBACK TRAN
+			RETURN 1;
+		END
+
+		DECLARE @fec DATETIME;
+		SELECT @fec = GETDATE();
+		SELECT @Reporte = IdReporteCaja
+			FROM ReporteCaja
+			WHERE CAST(FechaReporte AS DATE) = CAST(@fec AS DATE) AND IdSucursal = @Sucursal;
+		IF (@Reporte IS NULL)
+		BEGIN
+			INSERT INTO ReporteCaja (IdSucursal, FechaReporte) VALUES (@Sucursal, CAST(@fec AS DATETIME));
+			SELECT @Reporte = SCOPE_IDENTITY();
+		END
+
+		INSERT INTO ReporteDevolucion (IdReporteCaja, IdArticulo, IdCliente) VALUES (@Reporte, @Articulo, @Cliente);
+		COMMIT TRAN
+		RETURN 1;
+	END;
+DROP PROCEDURE InsertarReporteDev;
+
+
+
+CREATE PROCEDURE CambiarArticulo (
+	@Articulo INT,
+	@Cliente INT)
+	AS
+	BEGIN
+		BEGIN TRY
+			BEGIN TRAN
+
+			DECLARE @idRepOld INT;
+			DECLARE @idRep INT;
+			DECLARE @numV INT;
+			DECLARE @suc INT;
+			EXEC InsertarReporteDev @Articulo, 
+				@Cliente, 
+				@ReporteOld = @idRepOld OUTPUT, 
+				@Reporte = @idRep OUTPUT, 
+				@NumeroVenta = @numV OUTPUT, 
+				@Sucursal = @suc OUTPUT;
+
+			UPDATE Articulo 
+				SET EstadoArticulo = 'Devuelto'
+				WHERE IdArticulo = @Articulo;
+
+			DECLARE @prod INT;
+			SELECT @prod = IdProducto
+				FROM Articulo
+				WHERE IdArticulo = @Articulo;
+
+			DECLARE @reempl INT;
+			SELECT @reempl = IdArticulo
+				FROM Articulo
+				WHERE IdProducto = @prod AND IdSucursal = @suc AND EstadoArticulo = 'En sucursal';
+
+			UPDATE Articulo 
+				SET EstadoArticulo = 'Periodo garantia'
+				WHERE IdArticulo = @reempl;
+
+			UPDATE ReporteVenta 
+				SET IdArticulo = @reempl
+				WHERE IdReporteCaja = @idRepOld AND IdArticulo = @Articulo AND NumeroVenta = @numV AND IdCliente = @Cliente;
+
+			COMMIT TRAN
+			RETURN 1;
+		END TRY
+		BEGIN CATCH
+			IF(@@TRANCOUNT = 0)
+			BEGIN
+				RETURN 1;
+			END
+		END CATCH
+	END;
+DROP PROCEDURE CambiarArticulo;
+
+
+
+CREATE PROCEDURE DevolverArticulo (
+	@Articulo INT,
+	@Cliente INT)
+	AS
+	BEGIN
+		SET NOCOUNT ON;
+		BEGIN TRY
+			BEGIN TRAN
+
+			EXEC CambiarArticulo @Articulo, @Cliente;
+
+			DECLARE @dist INT;
+			SELECT @dist = D.IdDistribuidor
+				FROM Distribuidor AS D
+				INNER JOIN DistribuidorProducto AS DP ON DP.IdDistribuidor = D.IdDistribuidor
+				INNER JOIN DistribuidorArticulo AS DA ON DA.IdDistribuidorProducto = DP.IdDistribuidorProducto
+				INNER JOIN Articulo AS A ON A.IdArticulo = DA.IdArticulo
+				WHERE A.IdArticulo = @Articulo;
+
+			DECLARE @dev INT;
+			DECLARE @fec DATE;
+			SELECT @fec = CAST(GETDATE() AS DATE);
+			SELECT @dev = IdDevolucion
+				FROM Devolucion
+				WHERE IdDistribuidor = @dist AND Fecha = @fec;
+			IF(@dev IS NULL)
+			BEGIN
+				INSERT INTO Devolucion (IdDistribuidor, Fecha) VALUES (@dist, @fec);
+				SELECT @dev = SCOPE_IDENTITY();
+			END
+
+			INSERT INTO DevolucionArticulo (IdDevolucion, IdArticulo) VALUES (@dev, @Articulo);
+
+			COMMIT TRAN
+			SET NOCOUNT OFF;
+			RETURN 1;
+		END TRY
+		BEGIN CATCH
+			IF(@@TRANCOUNT = 0)
+			BEGIN
+				SET NOCOUNT OFF;
+				RETURN 1;
+			END
+		END CATCH
+	END;
+DROP PROCEDURE DevolverArticulo;
+
+EXEC DevolverArticulo 2, 149;
+
+
+
+
+
+-- SP con XML
+
+
